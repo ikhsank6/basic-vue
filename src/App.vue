@@ -4,7 +4,7 @@
   <Example msg="coba" angka="3" pesan="lagi nyobain nih" />
   <Directive :todos="todos" />
   <SelectPage @onChangePage="onClickChild" />
-  <ConsumeAPI :page="page" :key="page"/>
+  <ConsumeAPI :page="page" />
 </template>
 
 <script>
@@ -35,7 +35,6 @@ export default {
   },
   methods: {
     onClickChild(value) {
-      console.log(value); // someValue
       this.page = value
       
     },

@@ -26,8 +26,8 @@
 <script>
 export default {
   name: "ConsumeAPI",
-  props:{
-    page:Number,
+  props: {
+    page: Number,
   },
   data() {
     return {
@@ -48,7 +48,11 @@ export default {
   },
   mounted() {
     this.getList();
-     
+  },
+  watch: {
+    page: function () {
+      this.getList();
+    },
   },
 };
 </script>
