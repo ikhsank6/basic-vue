@@ -1,43 +1,46 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  
-  <Example msg="coba" angka="3" pesan="lagi nyobain nih"/>
-  <Directive :todos="todos" />
-  <SelectPage />
-  <ConsumeAPI />
+  <img alt="Vue logo" src="./assets/logo.png" />
 
+  <Example msg="coba" angka="3" pesan="lagi nyobain nih" />
+  <Directive :todos="todos" />
+  <SelectPage @onChangePage="onClickChild" />
+  <ConsumeAPI :page="page" :key="page"/>
 </template>
 
 <script>
-import Example from './components/Example.vue'
-import Directive from './components/Directive.vue'
-import ConsumeAPI from './components/ConsumeAPI.vue'
-import SelectPage from './components/filter/SelectPage.vue'
+import Example from "./components/Example.vue";
+import Directive from "./components/Directive.vue";
+import ConsumeAPI from "./components/ConsumeAPI.vue";
+import SelectPage from "./components/filter/SelectPage.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Example,
     Directive,
     ConsumeAPI,
-    SelectPage
+    SelectPage,
   },
-  data(){
+  data() {
     return {
       todos: [
         { id: 1, task: "todo 1", finished: false },
         { id: 2, task: "todo 2", finished: true },
         { id: 3, task: "todo 3", finished: false },
         { id: 4, task: "todo 4", finished: true },
-        { id: 5, task: "todo 5", finished: false }
+        { id: 5, task: "todo 5", finished: false },
       ],
-      page:1
-    }
+      page: 1,
+    };
   },
   methods: {
-    
-  }
-}
+    onClickChild(value) {
+      console.log(value); // someValue
+      this.page = value
+      
+    },
+  },
+};
 </script>
 
 <style>

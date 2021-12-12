@@ -5,7 +5,7 @@
       <label for="">Choose Page :</label>
     </div>
     <div class="col-md-2">
-      <select class="form-control" v-model="page" @click="changePage">
+      <select class="form-control" v-model="page" @change="changePage">
         <option v-for="it in Pages" :key="it" :value="it">{{ it }}</option>
       </select>
     </div>
@@ -38,11 +38,11 @@ export default {
     },
     changePage(){
         this.$store.state.pilihHalaman = this.page
+        this.$emit('onChangePage', this.page)
     },
   },
   mounted() {
     this.countNumberPage();
-    console.log(this.$store.getters.pilihHalaman) 
   },
 };
 </script>

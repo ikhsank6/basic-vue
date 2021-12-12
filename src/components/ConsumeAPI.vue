@@ -1,6 +1,6 @@
 <template>
   <h1 class="text-danger">Consume API</h1>
-  <h4>Page : {{ Page }}</h4>
+  <h4>Page : {{ page }}</h4>
   <div class="col-md-12">
     <table class="table table-dark">
       <thead>
@@ -26,6 +26,9 @@
 <script>
 export default {
   name: "ConsumeAPI",
+  props:{
+    page:Number,
+  },
   data() {
     return {
       datas: null,
@@ -33,19 +36,19 @@ export default {
     };
   },
   methods: {
-    getList(page) {
+    getList() {
       this.axios
-        .get("https://reqres.in/api/users?page=" + page)
+        .get("https://reqres.in/api/users?page=" + this.page)
         .then((response) => {
           const res = response.data;
           this.datas = res.data;
         });
-      this.Page = page;
-      console.log(page)
+      this.Page = this.$store.getters.pilihHalaman;
     },
   },
   mounted() {
-    this.getList(this.$store.getters.pilihHalaman);
+    this.getList();
+     
   },
 };
 </script>
